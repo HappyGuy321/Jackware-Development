@@ -1,6 +1,6 @@
-# Jackware Development — Company Website
+# Goodware Development — Company Website
 
-A simple, no-build-tools website for Jackware Development: home page,
+A simple, no-build-tools website for Goodware Development: home page,
 services, client reviews, a "Get a Quote" enquiry form, and a contact
 section.
 
