@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jackware Development | Websites &amp; Automation, North West England</title>
+
+  <!-- This links our CSS file, which controls all colours, fonts and layout -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ============ HEADER / NAVIGATION ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">
+        <span class="logo-mark">JD</span>
+        <span class="logo-text">Jackware Development</span>
+      </a>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#quote" class="nav-cta">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section id="top" class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">North West England · Websites &amp; Automation</p>
+      <h1>Software that gives your business its time back.</h1>
+      <p class="hero-lead">
+        Jackware Development builds trendy, fast websites and custom
+        automations that cut out the manual busywork &mdash; so your business
+        runs smoother, looks sharper, and grows faster.
+      </p>
+      <div class="hero-buttons">
+        <a href="#quote" class="btn btn-primary">Get a Quote</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>North West</strong><span>England Based</span></li>
+        <li><strong>Websites</strong><span>&amp; Automation</span></li>
+        <li><strong>5★</strong><span>Client Rated</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT / BUSINESS DESCRIPTION ============ -->
+  <section id="about" class="about">
+    <div class="container about-inner">
+      <div class="about-text">
+        <h2>About Jackware Development</h2>
+        <p>
+          I'm Louis Jackson, founder of Jackware Development. I build
+          websites and software automations that help businesses grow and
+          become more time-efficient &mdash; from a sharp new site that wins
+          more enquiries, to behind-the-scenes automation that removes hours
+          of repetitive admin from your week.
+        </p>
+        <p>
+          I'm based in the North West of England and work with small and
+          growing businesses who want technology that actually pays for
+          itself, not just looks nice.
+        </p>
+        <ul class="about-points">
+          <li>Modern, fast, mobile-friendly websites</li>
+          <li>Custom automations for repetitive business tasks</li>
+          <li>Straightforward pricing, no jargon</li>
+          <li>North West England based, remote-friendly</li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h3>Based In</h3>
+        <p>North West England</p>
+        <hr />
+        <h3>Get In Touch</h3>
+        <p>Louis Jackson<br />07503 199776<br />jacksonlouis486@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>What I Do</h2>
+      <p class="section-lead">Websites and automations built to save you time and win you more business.</p>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-card-body">
+            <h3>Website Design &amp; Development</h3>
+            <p>Modern, trendy websites built to load fast, look great on any device, and turn visitors into enquiries.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-card-body">
+            <h3>Business Process Automation</h3>
+            <p>Custom automations that handle repetitive admin &mdash; forms, emails, spreadsheets, bookings &mdash; so your team doesn't have to.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-card-body">
+            <h3>Ongoing Support &amp; Maintenance</h3>
+            <p>Updates, fixes, and improvements after launch, so your site and systems keep working as your business grows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <!--
+    NOTE FOR LOUIS:
+    These two reviews are placeholder text (you confirmed the company
+    names and ratings, I wrote short blurbs to match). Swap the <p
+    class="review-text"> content for the client's actual wording whenever
+    you have it — same layout works for more reviews too, just copy a
+    .review-card block.
+  -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <h2>What Clients Say</h2>
+      <p class="section-lead">A few words from businesses I've worked with.</p>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Louis built us a brand new website that's so much easier for customers to use. Quick turnaround and great communication throughout."</p>
+          <p class="review-author">City Built Ltd</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The automation Jackware set up has saved our team hours every week on admin we used to do by hand. Highly recommend."</p>
+          <p class="review-author">Nero Accounting Limited</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GET A QUOTE ============ -->
+  <section id="quote" class="quote">
+    <div class="container quote-inner">
+      <div>
+        <h2>Get a Quote</h2>
+        <p class="section-lead">
+          Tell me a bit about what you'd like built and I'll get back to you
+          with a quote.
+        </p>
+
+        <!--
+          NOTE FOR LOUIS:
+          This form is demo-only for now — see js/script.js. It shows an
+          on-screen confirmation but doesn't send anything anywhere yet.
+          README.md explains how to connect it to Formspree in about 10
+          minutes so enquiries land in your inbox.
+        -->
+        <form id="quote-form" class="card-form">
+          <label for="quote-name">Your name</label>
+          <input id="quote-name" type="text" required />
+
+          <label for="quote-company">Company (optional)</label>
+          <input id="quote-company" type="text" />
+
+          <label for="quote-email">Email</label>
+          <input id="quote-email" type="email" required />
+
+          <label for="quote-phone">Phone</label>
+          <input id="quote-phone" type="tel" required />
+
+          <label for="quote-details">What would you like built?</label>
+          <textarea id="quote-details" rows="4" placeholder="e.g. a new website for my plumbing business, or automating our invoice emails" required></textarea>
+
+          <label for="quote-budget">Rough budget (optional)</label>
+          <select id="quote-budget">
+            <option value="">Select a range&hellip;</option>
+            <option value="under-500">Under £500</option>
+            <option value="500-1500">£500 &ndash; £1,500</option>
+            <option value="1500-5000">£1,500 &ndash; £5,000</option>
+            <option value="5000-plus">£5,000+</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
+
+          <button type="submit" class="btn btn-primary btn-full">Send Enquiry</button>
+        </form>
+
+        <div id="quote-result" class="quote-result" hidden>
+          <h3>Thanks &mdash; enquiry received!</h3>
+          <p id="quote-summary"></p>
+          <p class="quote-note">I'll get back to you by phone or email shortly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="contact">
+    <div class="container contact-inner">
+      <h2>Contact Me</h2>
+      <p class="section-lead">Prefer to talk directly? Reach out any time.</p>
+      <div class="contact-card">
+        <p class="contact-name">Louis Jackson</p>
+        <p class="contact-detail">📞 <a href="tel:07503199776">07503 199776</a></p>
+        <p class="contact-detail">✉️ <a href="mailto:jacksonlouis486@gmail.com">jacksonlouis486@gmail.com</a></p>
+        <p class="contact-detail">📍 North West England</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="logo-mark">JD</span>
+        <span class="logo-text">Jackware Development</span>
+        <p>Websites &amp; automation for businesses across the North West.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>07503 199776<br />jacksonlouis486@gmail.com</p>
+      </div>
+      <div>
+        <h4>Based In</h4>
+        <p>North West England</p>
+      </div>
+    </div>
+    <p class="footer-note">&copy; 2026 Jackware Development. Site built with Claude Code.</p>
+  </footer>
+
+  <!-- This links our JavaScript file, which handles the quote form -->
+  <script src="js/script.js"></script>
+</body>
+</html>
