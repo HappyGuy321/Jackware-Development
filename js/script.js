@@ -24,3 +24,19 @@ document.getElementById("quote-form").addEventListener("submit", function (event
   document.getElementById("quote-form").reset();
   document.getElementById("quote-result").scrollIntoView({ behavior: "smooth", block: "center" });
 });
+
+// ===================== INTERACTIVE HERO DOTS =====================
+// Moves a "spotlight" over the dot pattern so it lights up under the
+// cursor. Position is passed to CSS via --mx/--my custom properties,
+// which the .hero-dots-spot mask in css/styles.css reads.
+
+const hero = document.querySelector(".hero");
+if (hero) {
+  hero.addEventListener("mousemove", function (event) {
+    const rect = hero.getBoundingClientRect();
+    const mx = ((event.clientX - rect.left) / rect.width) * 100;
+    const my = ((event.clientY - rect.top) / rect.height) * 100;
+    hero.style.setProperty("--mx", `${mx}%`);
+    hero.style.setProperty("--my", `${my}%`);
+  });
+}

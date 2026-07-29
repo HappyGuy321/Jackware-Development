@@ -25,9 +25,13 @@
   <!-- Logo mark, defined once and reused via <use> in the header and footer -->
   <svg width="0" height="0" style="position: absolute">
     <defs>
+      <linearGradient id="logo-gradient" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0%" stop-color="#22d3ee" />
+        <stop offset="55%" stop-color="#8b3fd1" />
+        <stop offset="100%" stop-color="#1d2f8f" />
+      </linearGradient>
       <symbol id="logo-icon" viewBox="0 0 24 24">
-        <path d="M3 17l6-6 4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M15 6h6v6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h.79a4.5 4.5 0 1 1 0 9z" fill="url(#logo-gradient)" />
       </symbol>
     </defs>
   </svg>
@@ -54,7 +58,9 @@
       <span class="hero-blob hero-blob-1"></span>
       <span class="hero-blob hero-blob-2"></span>
       <span class="hero-blob hero-blob-3"></span>
+      <span class="hero-blob hero-blob-4"></span>
       <span class="hero-dots"></span>
+      <span class="hero-dots-spot"></span>
     </div>
     <div class="container hero-inner">
       <p class="eyebrow">North West England · Websites &amp; Automation</p>
