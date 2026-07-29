@@ -146,9 +146,9 @@ section { padding: 88px 0; }
 }
 .hero-blob {
   position: absolute;
-  filter: blur(60px);
-  opacity: 0.4;
-  animation: hero-blob-float 16s ease-in-out infinite;
+  filter: blur(70px);
+  opacity: 0.22;
+  animation: hero-blob-float 18s ease-in-out infinite;
 }
 .hero-blob-1 {
   width: 360px;
@@ -159,15 +159,6 @@ section { padding: 88px 0; }
   clip-path: polygon(22% 3%, 78% 0%, 100% 35%, 92% 78%, 58% 100%, 15% 88%, 0% 55%, 8% 18%);
   animation-delay: 0s;
 }
-.hero-blob-2 {
-  width: 300px;
-  height: 300px;
-  top: 40px;
-  right: -110px;
-  background: var(--brand-violet);
-  clip-path: polygon(15% 0%, 85% 8%, 100% 45%, 88% 85%, 55% 100%, 10% 90%, 0% 50%, 5% 20%);
-  animation-delay: -5s;
-}
 .hero-blob-3 {
   width: 260px;
   height: 260px;
@@ -177,21 +168,45 @@ section { padding: 88px 0; }
   clip-path: polygon(20% 0%, 80% 5%, 100% 40%, 90% 80%, 60% 100%, 20% 92%, 0% 60%, 10% 22%);
   animation-delay: -10s;
 }
-.hero-blob-4 {
-  width: 150px;
-  height: 150px;
-  top: -30px;
-  right: 22%;
-  background: var(--brand-magenta);
-  border-radius: 50%;
-  opacity: 0.3;
-  animation-delay: -7s;
-}
 @keyframes hero-blob-float {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(24px, -26px) scale(1.06); }
   66% { transform: translate(-18px, 20px) scale(0.96); }
 }
+
+/* Dissolve shards: small angular fragments that fly outward from a few
+   origin points and fade, like paint breaking apart into pieces */
+.hero-shard-group {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.hero-shards-a { top: 8%; left: -2%; }
+.hero-shards-b { top: -2%; right: 8%; }
+.hero-shards-c { bottom: -4%; left: 42%; }
+.hero-shard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--size, 18px);
+  height: var(--size, 18px);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  filter: blur(1px);
+  opacity: 0;
+  animation: hero-shard-shoot 5.5s ease-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+.hero-shard:nth-of-type(4n + 1) { background: var(--brand-cyan); }
+.hero-shard:nth-of-type(4n + 2) { background: var(--brand-violet); }
+.hero-shard:nth-of-type(4n + 3) { background: var(--brand-blue); }
+.hero-shard:nth-of-type(4n + 4) { background: var(--brand-magenta); }
+@keyframes hero-shard-shoot {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  12% { opacity: 0.85; }
+  65% { opacity: 0.45; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1.1) rotate(var(--rot, 30deg)); opacity: 0; }
+}
+
 .hero-dots {
   position: absolute;
   inset: 0;
@@ -205,20 +220,21 @@ section { padding: 88px 0; }
 .hero-dots-spot {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(124, 58, 237, 0.65) 1.7px, transparent 1.7px);
+  background-image: radial-gradient(circle, rgba(124, 58, 237, 0.85) 2px, transparent 2px);
   background-size: 24px 24px;
-  -webkit-mask-image: radial-gradient(circle 150px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
-  mask-image: radial-gradient(circle 150px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
 }
 .hero-inner {
   position: relative;
   z-index: 1;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-blob { animation: none; }
+  .hero-blob, .hero-shard { animation: none; }
 }
 @media (max-width: 760px) {
   .hero-dots-spot { display: none; }
+  .hero-shard-group { display: none; }
 }
 .eyebrow {
   text-transform: uppercase;
