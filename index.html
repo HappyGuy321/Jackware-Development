@@ -13,15 +13,29 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://goodwaredevelopment.co.uk/" />
 
+  <!-- Fonts: Fraunces (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <!-- This links our CSS file, which controls all colours, fonts and layout -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <!-- Logo mark, defined once and reused via <use> in the header and footer -->
+  <svg width="0" height="0" style="position: absolute">
+    <defs>
+      <symbol id="logo-icon" viewBox="0 0 24 24">
+        <path d="M3 17l6-6 4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M15 6h6v6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+    </defs>
+  </svg>
   <!-- ============ HEADER / NAVIGATION ============ -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#top" class="logo">
-        <span class="logo-mark">GD</span>
+        <span class="logo-mark"><svg class="logo-icon" viewBox="0 0 24 24"><use href="#logo-icon" /></svg></span>
         <span class="logo-text">Goodware Development</span>
       </a>
       <nav class="nav">
@@ -36,6 +50,12 @@
 
   <!-- ============ HERO SECTION ============ -->
   <section id="top" class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="hero-blob hero-blob-1"></span>
+      <span class="hero-blob hero-blob-2"></span>
+      <span class="hero-blob hero-blob-3"></span>
+      <span class="hero-dots"></span>
+    </div>
     <div class="container hero-inner">
       <p class="eyebrow">North West England · Websites &amp; Automation</p>
       <h1>Software that gives your business its time back.</h1>
@@ -219,7 +239,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <span class="logo-mark">GD</span>
+        <span class="logo-mark"><svg class="logo-icon" viewBox="0 0 24 24"><use href="#logo-icon" /></svg></span>
         <span class="logo-text">Goodware Development</span>
         <p>Websites &amp; automation for businesses across the North West.</p>
       </div>
