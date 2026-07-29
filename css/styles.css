@@ -47,6 +47,15 @@ h1, h2, h3 {
 
 a { color: inherit; text-decoration: none; }
 
+/* Hollow/outline heading accent, inspired by the reference screenshots */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.6px var(--ink);
+}
+.section-dark .text-outline {
+  -webkit-text-stroke-color: #ffffff;
+}
+
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -77,7 +86,7 @@ section { padding: 88px 0; }
   background: var(--indigo);
   color: var(--white);
 }
-.btn-primary:hover { background: var(--indigo-dark); }
+.btn-primary:hover { background: var(--indigo-dark); box-shadow: 0 0 22px rgba(124, 58, 237, 0.45); }
 .btn-secondary {
   background: transparent;
   border-color: var(--line);
@@ -121,15 +130,30 @@ section { padding: 88px 0; }
   height: 30px;
 }
 .nav { display: flex; align-items: center; gap: 28px; }
-.nav a { font-size: 0.92rem; color: var(--ink-soft); font-weight: 500; }
-.nav a:hover { color: var(--ink); }
+.nav a {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.nav a:hover {
+  color: var(--brand-violet);
+  text-shadow: 0 0 12px rgba(124, 58, 237, 0.45);
+}
 .nav-cta {
   background: var(--indigo);
   color: var(--white) !important;
   padding: 9px 18px;
   border-radius: var(--radius);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
-.nav-cta:hover { background: var(--indigo-dark); }
+.nav-cta:hover {
+  background: var(--indigo-dark);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+  text-shadow: none;
+}
+.logo-text { transition: text-shadow 0.2s ease; }
+.logo:hover .logo-text { text-shadow: 0 0 16px rgba(124, 58, 237, 0.35); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -174,37 +198,32 @@ section { padding: 88px 0; }
   66% { transform: translate(-18px, 20px) scale(0.96); }
 }
 
-/* Dissolve shards: small angular fragments that fly outward from a few
-   origin points and fade, like paint breaking apart into pieces */
-.hero-shard-group {
+/* Night-sky star field: small twinkling dots that drift gently opposite
+   the cursor for a subtle parallax feel (uses the same --mx/--my custom
+   properties the dot spotlight below reads, set by js/script.js) */
+.hero-stars {
   position: absolute;
-  width: 0;
-  height: 0;
+  inset: 0;
+  transform: translate(calc((var(--mx, 50%) - 50%) * -0.04), calc((var(--my, 15%) - 50%) * -0.04));
+  transition: transform 0.2s ease-out;
 }
-.hero-shards-a { top: 8%; left: -2%; }
-.hero-shards-b { top: -2%; right: 8%; }
-.hero-shards-c { bottom: -4%; left: 42%; }
-.hero-shard {
+.star {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--size, 18px);
-  height: var(--size, 18px);
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  filter: blur(1px);
-  opacity: 0;
-  animation: hero-shard-shoot 5.5s ease-out infinite;
+  top: var(--top);
+  left: var(--left);
+  width: var(--size, 2px);
+  height: var(--size, 2px);
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: hero-star-twinkle var(--dur, 3s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
-.hero-shard:nth-of-type(4n + 1) { background: var(--brand-cyan); }
-.hero-shard:nth-of-type(4n + 2) { background: var(--brand-violet); }
-.hero-shard:nth-of-type(4n + 3) { background: var(--brand-blue); }
-.hero-shard:nth-of-type(4n + 4) { background: var(--brand-magenta); }
-@keyframes hero-shard-shoot {
-  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
-  12% { opacity: 0.85; }
-  65% { opacity: 0.45; }
-  100% { transform: translate(var(--tx), var(--ty)) scale(1.1) rotate(var(--rot, 30deg)); opacity: 0; }
+.star:nth-of-type(3n + 1) { background: var(--brand-cyan); }
+.star:nth-of-type(3n + 2) { background: var(--brand-violet); }
+.star:nth-of-type(3n + 3) { background: var(--brand-blue); }
+@keyframes hero-star-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.95; transform: scale(1.4); }
 }
 
 .hero-dots {
@@ -220,21 +239,28 @@ section { padding: 88px 0; }
 .hero-dots-spot {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(124, 58, 237, 0.85) 2px, transparent 2px);
+  background-image: radial-gradient(circle, rgba(124, 58, 237, 0.9) 2.2px, transparent 2.2px);
   background-size: 24px 24px;
-  -webkit-mask-image: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
-  mask-image: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 230px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 230px at var(--mx, 50%) var(--my, 15%), black 0%, transparent 100%);
+}
+/* Soft glow that follows the cursor underneath the dots, for a gentle
+   "lit up" feel where your mouse moves */
+.hero-glow-cursor {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 260px at var(--mx, 50%) var(--my, 15%), rgba(139, 63, 209, 0.16), transparent 70%);
 }
 .hero-inner {
   position: relative;
   z-index: 1;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-blob, .hero-shard { animation: none; }
+  .hero-blob, .star { animation: none; }
+  .hero-stars { transform: none; }
 }
 @media (max-width: 760px) {
   .hero-dots-spot { display: none; }
-  .hero-shard-group { display: none; }
 }
 .eyebrow {
   text-transform: uppercase;
@@ -305,6 +331,12 @@ section { padding: 88px 0; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.about-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(29, 47, 143, 0.12);
+  border-color: rgba(124, 58, 237, 0.35);
 }
 .about-card h3 { font-size: 1rem; margin-bottom: 8px; }
 .about-card p { color: var(--ink-soft); font-size: 0.92rem; }
@@ -323,14 +355,24 @@ section { padding: 88px 0; }
   border-radius: var(--radius);
   border: 1px solid var(--line);
   overflow: hidden;
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 .service-card:hover {
-  box-shadow: 0 8px 24px rgba(20,24,31,0.06);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.15), 0 0 0 1px rgba(124, 58, 237, 0.25);
+  transform: translateY(-4px);
+  border-color: rgba(124, 58, 237, 0.35);
 }
 .service-card-body { padding: 26px; }
-.service-card h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--ink); }
+.service-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.service-card:hover h3 {
+  color: var(--brand-violet);
+  text-shadow: 0 0 14px rgba(124, 58, 237, 0.3);
+}
 .service-card p { color: var(--ink-soft); font-size: 0.9rem; }
 
 /* ---------- Reviews ---------- */
@@ -346,6 +388,12 @@ section { padding: 88px 0; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 26px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.15), 0 0 0 1px rgba(34, 211, 238, 0.3);
+  border-color: rgba(34, 211, 238, 0.4);
 }
 .review-stars {
   color: #f5a623;
@@ -416,10 +464,41 @@ input:focus, select:focus, textarea:focus {
   border-radius: var(--radius);
   padding: 32px;
   max-width: 420px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(29, 47, 143, 0.1);
+  border-color: rgba(124, 58, 237, 0.3);
 }
 .contact-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 12px; }
 .contact-detail { color: var(--ink-soft); margin-bottom: 8px; }
 .contact-detail a:hover { color: var(--indigo); }
+
+/* ---------- Dark sections ---------- */
+.section-dark {
+  background: #0d0f14;
+  color: #c7cbd3;
+}
+.section-dark h2, .section-dark h3 { color: #ffffff; }
+.section-dark .section-lead { color: #9aa0ab; }
+.section-dark .eyebrow { color: var(--brand-cyan); }
+.section-dark .about p { color: #a7abb5; }
+.section-dark .about-points li { color: #e7e9ee; }
+.section-dark .about-points li::before { background: var(--brand-cyan); }
+.section-dark .about-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.section-dark .about-card:hover { border-color: rgba(34, 211, 238, 0.4); }
+.section-dark .about-card p { color: #a7abb5; }
+.section-dark .about-card hr { border-top-color: rgba(255, 255, 255, 0.1); }
+.section-dark .review-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.section-dark .review-text { color: #e7e9ee; }
+.section-dark .review-author { color: #9aa0ab; }
 
 /* ---------- Footer ---------- */
 .site-footer {
